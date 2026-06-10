@@ -51,6 +51,12 @@ def main():
                 print("Game over!")
                 sys.exit()
 
+            for s in shots:
+                if a.collides_with(s):
+                    log_event("asteroid_shot")
+                    a.split()
+                    s.kill()
+
         pygame.Surface.fill(screen, "black")
         for d in drawable:
             d.draw(screen)
