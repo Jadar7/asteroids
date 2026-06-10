@@ -2,7 +2,6 @@ import sys
 
 import pygame
 
-import shot
 from asteroid import Asteroid
 from asteroidfield import AsteroidField
 from constants import SCREEN_HEIGHT, SCREEN_WIDTH
