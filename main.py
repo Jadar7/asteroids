@@ -14,8 +14,8 @@ from shot import Shot
 def main():
     pygame.init()
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-
     clock = pygame.time.Clock()
+    elapsed_time = pygame.time.get_ticks() / 1000
     dt = 0.0
 
     updatable = pygame.sprite.Group()
@@ -49,11 +49,15 @@ def main():
             if a.collides_with(player):
                 log_event("player_hit")
                 print("Game over!")
+                print(
+                    f"You destroyed {player.score} asteroids and survived {elapsed_time} seconds!"
+                )
                 sys.exit()
 
             for s in shots:
                 if a.collides_with(s):
                     log_event("asteroid_shot")
+                    player.score += 1
                     a.split()
                     s.kill()
 
